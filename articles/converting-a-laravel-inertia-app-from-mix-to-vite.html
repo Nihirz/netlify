@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link href="../css/app.css" rel="stylesheet">
+    <link href="../img/favicon-32x32.png" rel="icon" sizes="32x32">
+    <link href="../img/favicon-192x192.png" rel="icon" sizes="192x192">
+    <link href="../img/favicon-297x297.png" rel="apple-touch-icon-precomposed">
+    <meta content="/img/favicon-297x297.png" name="msapplication-TileImage">
+    <title>
+        Converting a Laravel Inertia App from Mix to Vite |
+        Seb Kay
+    </title>
+    <meta name="description" content="">
+    <meta name="google-site-verification" content="bzTP6T7_iPqdsTPB1KIMbC5z7GXwvXKbcedNpY">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@sebkaydesign">
+    <meta name="twitter:title" content="Converting a Laravel Inertia App from Mix to Vite | Seb Kay">
+    <meta name="twitter:description" content="I recently converted my Inertia app from Laravel Mix to using Vite. In this post I&#039;ll talk about how it went, as well as some of the gotchas.">
+    <meta name="twitter:image" content="https://res.cloudinary.com/sebkay/image/upload/v1651768884/seb-kay-twitter-card_cvco9q.jpg">
+</head>
+<body>
+    <div class="wrap">
+        <header class="header">
+    <div class="header__section header__section--media">
+        <a class="logo" href="../index.html">
+            <picture>
+                <source type="image/webp" srcset="../img/seb-avatar-2021.webp 1x, ../img/seb-avatar-2021-_2x.webp 2x">
+                <source type="image/jpeg" srcset="../img/seb-avatar-2021.jpg 1x, ../img/seb-avatar-2021-_2x.jpg 2x">
+                <img width="100" height="100" src="..../img/seb-avatar-2021.jpg" alt="Headshot of Seb Kay">
+            </picture>
+            <span class="logo__text">
+                Seb Kay
+            </span>
+        </a>
+    </div>
+    <div class="header__section header__section--menu">
+        <a class="logo" href="../index.html">
+            <span class="logo__text">
+                Seb Kay
+            </span>
+        </a>
+        <nav class="menu">
+            <a class="menu__item " href="../work.html">
+                Work
+            </a>
+            <a class="menu__item "
+                href="../projects.html">
+                Projects
+            </a>
+            <a class="menu__item active"
+                href="../articles.html">
+                Articles
+            </a>
+            <a class="menu__item "
+                href="../contact.html">
+                Contact
+            </a>
+        </nav>
+    </div>
+</header>
+            <section>
+        <div class="grid grid--tb2-12">
+            <div class="grid__column grid__column--4">
+                <div class="mb-tiny">
+    <p class="subheading">
+        Search
+    </p>
+</div>
+<div class="mb-medium">
+    <form class="search-form" action="../articles.html">
+        <input class="search-form__field" type="text" name="s" placeholder="PHP, WordPress, Freelancing..."
+            enterkeyhint="search" value="">
+        <button class="search-form__action">
+            Search
+        </button>
+    </form>
+</div>
+                <div class="mb-tiny">
+        <p class="subheading">
+            Filter By
+        </p>
+    </div>
+    <ul class="link-list">
+                    <li class="link-list__item ">
+                <a class="tag" href="../articles/category/freelancing.html"
+                    >
+                    Freelancing
+                </a>
+            </li>
+                    <li class="link-list__item ">
+                <a class="tag" href="../articles/category/copywriting.html"
+                    >
+                    Copywriting
+                </a>
+            </li>
+                    <li class="link-list__item ">
+                <a class="tag" href="../articles/category/side-projects.html"
+                    >
+                    Side Projects
+                </a>
+            </li>
+                    <li class="link-list__item ">
+                <a class="tag" href="../articles/category/wordpress.html"
+                     style="border-color: #0073AA; color: #0073AA;" >
+                    WordPress
+                </a>
+            </li>
+                    <li class="link-list__item ">
+                <a class="tag" href="../articles/category/tips.html"
+                    >
+                    Tips
+                </a>
+            </li>
+                    <li class="link-list__item ">
+                <a class="tag" href="../articles/category/advice.html"
+                    >
+                    Advice
+                </a>
+            </li>
+                    <li class="link-list__item ">
+                <a class="tag" href="../articles/category/assorted.html"
+                    >
+                    Assorted
+                </a>
+            </li>
+                    <li class="link-list__item ">
+                <a class="tag" href="../articles/category/laravel.html"
+                     style="border-color: #F9322C; color: #F9322C;" >
+                    Laravel
+                </a>
+            </li>
+            </ul>
+            </div>
+            <div class="grid__column grid__column--8">
+                <div class="mb-large">
+                    <h1 class="mb-tiny">
+                        Converting a Laravel Inertia App from Mix to Vite
+                    </h1>
+                    <p class="mb-medium txt-fade">
+                        <a class="tag" href="../articles/category/laravel.html"
+                             style="border-color: #F9322C; color: #F9322C;" >
+                            Laravel
+                        </a>
+                        <br>
+                        02 September 2022
+                        /
+                        4 minute read
+                    </p>
+                    <p class="txt-large">
+                        I recently converted my Inertia app from Laravel Mix to using Vite. In this post I'll talk about how it went, as well as some of the gotchas.
+                    </p>
+                    <div class="wysiwyg mt-small">
+                        <h2>Initial Thoughts</h2>
+<p>I'd like to start off by saying I think the decision to move from <a href="https://laravel-mix.com/">Mix</a> to <a href="https://vitejs.dev/">Vite</a> in a minor Laravel release (<code>9.2.0</code>) was a mistake.</p>
+<p>Vite is very different from Mix in a lot of ways, and now any time someone makes a new Laravel app it's going to use Vite. It's going to be very jarring for a big part of community.</p>
+<p>It's easy to forget the majority of everyday Laravel developers aren't on Twitter and &quot;in&quot; the community. They're trying to get their work done so they can home and enjoy their lives. I believe there's absolutely nothing wrong with that.</p>
+<hr />
+<h2>Jumping In Head First</h2>
+<p>When I saw Vite was going to be the default I was apprehensive, mainly because it was new, however I was more than willing to jump in head first.</p>
+<p>I initially tried using Vite on my own a few weeks before <a href="https://jessarcher.com/">Jess Archer</a> did all the hard work getting the proper implementation done. I'll be honest, I struggled big time and gave up after about an hour of frustration.</p>
+<p>However, thanks to Jess's hard work, it made my life a lot easier than it would've been!</p>
+<h3>Problems with Inertia</h3>
+<p>There's one major difference between Webpack and Vite that threw me a curve ball. It's that Vite doesn't support it when you use await import statements for your Inertia layouts, so the following code now longer works:</p>
+<pre><code class="language-js">import { createInertiaApp } from '@inertiajs/inertia-vue3';
+import UserLayout from './src/layouts/User';
+createInertiaApp({
+    resolve: async name =&gt; {
+        let page = (await import(`./src/views/${name}`)).default;
+        page.layout ??= UserLayout;
+        return page;
+    },
+});
+</code></pre>
+<p>It needed to be changed to use the new <a href="https://github.com/laravel/vite-plugin"><code>laravel-vite-plugin</code></a>, which helps with resolving the templates.</p>
+<pre><code class="language-js">import { createInertiaApp } from '@inertiajs/inertia-vue3';
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+createInertiaApp({
+    resolve: async name =&gt; {
+        let page = resolvePageComponent(`./src/views/${name}.vue`, import.meta.glob('./src/views/**/*.vue'));
+        return page;
+    },
+});
+</code></pre>
+<p>This created a problem because I can no longer specify the &quot;default&quot; page template for my Inertia pages. Now I have to manually specify it in every Vue page.</p>
+<p>At first this bugged me, however I later realised it's actually better becuase the layout of the current page is no longer obscured while you're editing it.</p>
+<pre><code class="language-js">import UserLayout from &quot;@js/layouts/User.vue&quot;;
+export default {
+    layout: UserLayout,
+    data() {
+        return {
+            title: &quot;Dashboard&quot;,
+        };
+    },
+};
+</code></pre>
+<h3>Vue Imports and File Extensions</h3>
+<p>In my app I've got a lot of imports for things like components and layouts. This is just part of the development experience when it comes to building an SPA. The issue I ran into is that when compiling with Webpack, you can omit the <code>.vue</code> file extension, so you get something like this:</p>
+<pre><code class="language-js">import Button from &quot;@js/components/Button&quot;;
+</code></pre>
+<p>Unfortunately Vite doesn't like it when there's no file extension and will fall apart.</p>
+<p>This isn't a criticism of Vite, I actually think having the file extensions makes a lot of sense, it's just a bad pattern I'd fallen into.</p>
+<p>To fix the issue, you need to change every import to include the file extension, like so:</p>
+<pre><code class="language-js">import Button from &quot;@js/components/Button.vue&quot;;
+</code></pre>
+<h3>Problems with Ziggy</h3>
+<p>Ziggy is a fantastic tool that helps you use Laravel defined routes in your JavaScript files. Incredibly useful when you're building and SPA (or whatever you'd call an Inertia app I suppose).</p>
+<p>Unfortunately, the way I had Ziggy set up no longer worked with Vite.</p>
+<p>I've written another post, <a href="../articles/using-ziggy-with-laravel-inertia-and-vite.html">Using Ziggy with Laravel, Inertia (Vue) and Vite</a>, that deals with those issues. Be sure to check that out to see how I solved it.</p>
+<hr />
+<h2>Wrapping Up</h2>
+<p>Overall I'm very happy with Vite set up (once I got over the migration issues).</p>
+<p>It's so fast it's honestly ridiculous. The way it achieves this is by not pre-compiling your JavaScript, like Webpack does, when you're in development mode. It only run all the minification and optimisation stuff when you build for production.</p>
+<p>If you've recently moved to Vite from Mix and you're having issues, <a href="https://twitter.com/sebkaydesign">give me a shout on Twitter</a> and maybe we can end up helping each other!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="footer">
+    <div class="footer__inner">
+        <p class="footer__text">
+            &copy; 2022 Seb Kay.
+        </p>
+        <p class="footer__text">
+            Built with <a class="highlight-laravel" href="https://laravel.com/" target="_blank">Laravel</a>.
+        </p>
+    </div>
+</footer>
+    </div>
+    <script defer src="../js/manifest.js"></script>
+    <script defer src="../js/vendor.js"></script>
+    <script defer src="../js/app.js"></script>
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-31577987-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'UA-31577987-1');
+        </script>
+    </body>
+</html>

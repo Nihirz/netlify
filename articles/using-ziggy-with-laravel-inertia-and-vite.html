@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link href="../css/app.css" rel="stylesheet">
+    <link href="../img/favicon-32x32.png" rel="icon" sizes="32x32">
+    <link href="../img/favicon-192x192.png" rel="icon" sizes="192x192">
+    <link href="../img/favicon-297x297.png" rel="apple-touch-icon-precomposed">
+    <meta content="/img/favicon-297x297.png" name="msapplication-TileImage">
+    <title>
+        Using Ziggy with Laravel, Inertia (Vue) and Vite |
+        Seb Kay
+    </title>
+    <meta name="description" content="">
+    <meta name="google-site-verification" content="bzTP6T7_iPqdsTPB1KIMbC5z7GXwvXKbcedNpY">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@sebkaydesign">
+    <meta name="twitter:title" content="Using Ziggy with Laravel, Inertia (Vue) and Vite | Seb Kay">
+    <meta name="twitter:description" content="I recently converted one of my apps from Laravel Mix (Webpack) to Vite.
+Unfortunately there was a big stumbling block when it came to getting Ziggy working.
+In this post I discuss how I found a solution.">
+    <meta name="twitter:image" content="https://res.cloudinary.com/sebkay/image/upload/v1651768884/seb-kay-twitter-card_cvco9q.jpg">
+</head>
+<body>
+    <div class="wrap">
+        <header class="header">
+    <div class="header__section header__section--media">
+        <a class="logo" href="../index.html">
+            <picture>
+                <source type="image/webp" srcset="../img/seb-avatar-2021.webp 1x, ../img/seb-avatar-2021-_2x.webp 2x">
+                <source type="image/jpeg" srcset="../img/seb-avatar-2021.jpg 1x, ../img/seb-avatar-2021-_2x.jpg 2x">
+                <img width="100" height="100" src="..../img/seb-avatar-2021.jpg" alt="Headshot of Seb Kay">
+            </picture>
+            <span class="logo__text">
+                Seb Kay
+            </span>
+        </a>
+    </div>
+    <div class="header__section header__section--menu">
+        <a class="logo" href="../index.html">
+            <span class="logo__text">
+                Seb Kay
+            </span>
+        </a>
+        <nav class="menu">
+            <a class="menu__item " href="../work.html">
+                Work
+            </a>
+            <a class="menu__item "
+                href="../projects.html">
+                Projects
+            </a>
+            <a class="menu__item active"
+                href="../articles.html">
+                Articles
+            </a>
+            <a class="menu__item "
+                href="../contact.html">
+                Contact
+            </a>
+        </nav>
+    </div>
+</header>
+            <section>
+        <div class="grid grid--tb2-12">
+            <div class="grid__column grid__column--4">
+                <div class="mb-tiny">
+    <p class="subheading">
+        Search
+    </p>
+</div>
+<div class="mb-medium">
+    <form class="search-form" action="../articles.html">
+        <input class="search-form__field" type="text" name="s" placeholder="PHP, WordPress, Freelancing..."
+            enterkeyhint="search" value="">
+        <button class="search-form__action">
+            Search
+        </button>
+    </form>
+</div>
+                <div class="mb-tiny">
+        <p class="subheading">
+            Filter By
+        </p>
+    </div>
+    <ul class="link-list">
+                    <li class="link-list__item ">
+                <a class="tag" href="../articles/category/freelancing.html"
+                    >
+                    Freelancing
+                </a>
+            </li>
+                    <li class="link-list__item ">
+                <a class="tag" href="../articles/category/copywriting.html"
+                    >
+                    Copywriting
+                </a>
+            </li>
+                    <li class="link-list__item ">
+                <a class="tag" href="../articles/category/side-projects.html"
+                    >
+                    Side Projects
+                </a>
+            </li>
+                    <li class="link-list__item ">
+                <a class="tag" href="../articles/category/wordpress.html"
+                     style="border-color: #0073AA; color: #0073AA;" >
+                    WordPress
+                </a>
+            </li>
+                    <li class="link-list__item ">
+                <a class="tag" href="../articles/category/tips.html"
+                    >
+                    Tips
+                </a>
+            </li>
+                    <li class="link-list__item ">
+                <a class="tag" href="../articles/category/advice.html"
+                    >
+                    Advice
+                </a>
+            </li>
+                    <li class="link-list__item ">
+                <a class="tag" href="../articles/category/assorted.html"
+                    >
+                    Assorted
+                </a>
+            </li>
+                    <li class="link-list__item ">
+                <a class="tag" href="../articles/category/laravel.html"
+                     style="border-color: #F9322C; color: #F9322C;" >
+                    Laravel
+                </a>
+            </li>
+            </ul>
+            </div>
+            <div class="grid__column grid__column--8">
+                <div class="mb-large">
+                    <h1 class="mb-tiny">
+                        Using Ziggy with Laravel, Inertia (Vue) and Vite
+                    </h1>
+                    <p class="mb-medium txt-fade">
+                        <a class="tag" href="../articles/category/laravel.html"
+                             style="border-color: #F9322C; color: #F9322C;" >
+                            Laravel
+                        </a>
+                        <br>
+                        08 July 2022
+                        /
+                        2 minute read
+                    </p>
+                    <p class="txt-large">
+                        I recently converted one of my apps from Laravel Mix (Webpack) to Vite.
+Unfortunately there was a big stumbling block when it came to getting Ziggy working.
+In this post I discuss how I found a solution.
+                    </p>
+                    <div class="wysiwyg mt-small">
+                        <p><a href="https://github.com/tighten/ziggy">Ziggy</a> is a fantastic tool that helps with using Laravel-defined routes in your JavaScript files. Incredibly helpful when you're building an SPA, or something more hybrid, like I'm doing with my <a href="https://inertiajs.com/">Inertia</a> app.</p>
+<p>That being said, the way I had Ziggy set up no longer worked when moving from <a href="https://github.com/laravel-mix/laravel-mix">Laravel Mix</a> to <a href="https://vitejs.dev/">Vite</a>.</p>
+<p>I had to change my Mix configuration from this:</p>
+<pre><code class="language-js"># webpack.mix.js
+const path = require('path');
+mix.alias({
+    ziggy: path.resolve('vendor/tightenco/ziggy/dist/vue'),
+});
+</code></pre>
+<pre><code class="language-js"># app.js
+import { Ziggy, ZiggyVue, route } from 'ziggy';
+import { createApp, h } from 'vue';
+import { createInertiaApp } from '@inertiajs/inertia-vue3';
+createInertiaApp({
+    setup({ el, App, props, plugin }) {
+        const VueApp = createApp({ render: () =&gt; h(App, props) });
+        VueApp
+            .use(plugin,)
+            .use(ZiggyVue, Ziggy);
+        VueApp
+            .mount(el);
+    },
+});
+</code></pre>
+<p>to this in Vite:</p>
+<pre><code class="language-js"># vite.config.js
+import { defineConfig } from 'vite';
+export default defineConfig({
+    resolve: {
+        alias: {
+            'ziggy': '/vendor/tightenco/ziggy/src/js',
+            'ziggy-vue': '/vendor/tightenco/ziggy/src/js/vue',
+        },
+    },
+]);
+</code></pre>
+<pre><code class="language-js"># app.js
+import { ZiggyVue } from 'ziggy-vue';
+import route from 'ziggy';
+import { createApp, h } from 'vue';
+import { createInertiaApp } from '@inertiajs/inertia-vue3';
+createInertiaApp({
+    setup({ el, App, props, plugin }) {
+        const VueApp = createApp({ render: () =&gt; h(App, props) });
+        VueApp
+            .use(plugin)
+            .use(ZiggyVue);
+        VueApp
+            .mount(el);
+    },
+});
+</code></pre>
+<p><em>A lot of other code that goes around the above has been stripped out so you can easily see the parts I actually changed.</em></p>
+<p>As you may see, I had to change my single alias of <code>ziggy</code> to two aliases, <code>ziggy</code> and <code>ziggy-vue</code>.</p>
+<p>There was an issue with Vite being able to import the correct functions due to the way Ziggy is set up, however separating out the imports seemed to do the trick.</p>
+<p>You may also notice I was initially importing another function called <code>Ziggy</code>, however that no longer seemed necessary with Vite, so I'm curious as to whether or not I actually needed it in the first place.</p>
+<p>It took me a lot of trial and error to figure that out, so if it's been a problem for you too, I hope this at the very least points you in the right direction.</p>
+<p>Give me a shout on <a href="https://twitter.com/sebkaydesign">Twitter</a> if you've faced any similar issues!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="footer">
+    <div class="footer__inner">
+        <p class="footer__text">
+            &copy; 2022 Seb Kay.
+        </p>
+        <p class="footer__text">
+            Built with <a class="highlight-laravel" href="https://laravel.com/" target="_blank">Laravel</a>.
+        </p>
+    </div>
+</footer>
+    </div>
+    <script defer src="../js/manifest.js"></script>
+    <script defer src="../js/vendor.js"></script>
+    <script defer src="../js/app.js"></script>
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-31577987-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'UA-31577987-1');
+        </script>
+    </body>
+</html>
